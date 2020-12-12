@@ -47,6 +47,11 @@ def get_progress_data(interval):
     return data
 
 
+@app.route("/", methods=["GET"])
+def home():
+    return "Development Dashboard Home"
+
+
 @app.route("/api/v1/dashboard/listing", methods=["GET"])
 def listing():
     query_parameters = request.args
