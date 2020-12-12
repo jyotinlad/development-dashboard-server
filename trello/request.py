@@ -8,9 +8,9 @@ class Request:
 
     def __init__(self):
         load_dotenv()
-        self._BASE_URL = getenv("BASE_URL")
-        self._API_KEY = getenv("API_KEY")
-        self._TOKEN = getenv("TOKEN")
+        self._BASE_URL = getenv("TRELLO_BASE_URL")
+        self._API_KEY = getenv("TRELLO_API_KEY")
+        self._TOKEN = getenv("TRELLO_TOKEN")
 
         if not self._TOKEN:
             raise EnvironmentError("the Trello TOKEN not defined")

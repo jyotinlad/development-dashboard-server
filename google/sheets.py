@@ -9,7 +9,7 @@ class Sheets:
     @staticmethod
     def fetch(sheet):
         load_dotenv()
-        file_id = getenv("FILE_ID")
+        file_id = getenv("GOOGLE_SHEETS_FILE_ID")
         api_key = getenv("GOOGLE_API_KEY")
 
         res = get(url=f"https://sheets.googleapis.com/v4/spreadsheets/{file_id}/values/{sheet}?key={api_key}")
