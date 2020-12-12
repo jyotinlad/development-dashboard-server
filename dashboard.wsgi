@@ -2,4 +2,4 @@
 import sys
 sys.path.insert(0, '/var/www/html/development-dashboard-server')
 
-from flaskapp import app as application
+from dashboard import app as application
