@@ -1,7 +1,6 @@
 from calendar import monthrange
 from collections import Counter
-from datetime import date
-from dateutil.relativedelta import relativedelta
+from datetime import date, timedelta
 
 from trello.board import Board
 
@@ -20,9 +19,9 @@ class BoardStats:
     @classmethod
     def quarterly(cls, board_id):
         data = Counter()
-        start_date = date.today() - relativedelta(months=9)
+        start_date = date.today() - timedelta(months=9)
         for i in range(4):
-            dt = start_date + relativedelta(months=i*3)
+            dt = start_date + timedelta(months=i*3)
             quarter = cls._get_quarter_key(dt)
             print(quarter)
             data[quarter] = 0
