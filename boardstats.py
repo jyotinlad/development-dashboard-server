@@ -1,6 +1,7 @@
 from calendar import monthrange
 from collections import Counter
-from datetime import date, timedelta
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 from trello.board import Board
 
@@ -10,27 +11,30 @@ class BoardStats:
     @staticmethod
     def _get_end_of_month(dt):
         return dt.replace(day=monthrange(dt.year, dt.month)[1])
+    
+    @staticmethod
+    def _get_quarter_from_month(month):
+        return (month - 1) // 3 + 1
 
     @classmethod
     def _get_quarter_key(cls, dt):
-        quarter = (dt.month - 1) // 3 + 1
+        quarter = cls._get_quarter_from_month(dt.month)
         return cls._get_end_of_month(dt.replace(month=quarter*3, day=1))
 
     @classmethod
     def quarterly(cls, board_id):
         data = Counter()
-        start_date = date.today() - timedelta(months=9)
+        start_date = date.today() - relativedelta(months=9)
         for i in range(4):
-            dt = start_date + timedelta(months=i*3)
+            dt = start_date + relativedelta(months=i*3)
             quarter = cls._get_quarter_key(dt)
-            print(quarter)
             data[quarter] = 0
 
         board = Board(board_id)
         records = board.completed()
         for record in records:
             completed_date = record.get("completed_date")
-            quarter = cls._get_quarter_key(completed_date)
+            quarter = cls._get_quarter_key(completed_date).date()
             if quarter not in data.keys():
                 continue
 

@@ -60,7 +60,9 @@ def listing():
         if parameter not in query_parameters:
             return invalid_query(f"Missing Parameter: {parameter}")
     
-    return jsonify(Listing.get(query_parameters.get("type")))
+    response = jsonify(Listing.get(query_parameters.get("type")))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 @app.route("/api/v1/dashboard/progress", methods=["GET"])
@@ -74,7 +76,9 @@ def progress():
     if interval not in intervals:
         return invalid_query(f"Invalid Parameter Value: interval requires one of {intervals}")
 
-    return jsonify(get_progress_data(interval))
+    response = jsonify(get_progress_data(interval))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 if __name__ == "__main__":
@@ -87,6 +91,6 @@ if __name__ == "__main__":
 
     if debug:
         app.config["DEBUG"] = debug
-        app.run()
+        app.run(port=2800)
     else:
-        serve(app, host="0.0.0.0", port=2800)
+        serve(app, port=2800)
