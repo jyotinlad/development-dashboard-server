@@ -5,6 +5,9 @@ A backend API service..
 
 ## Setup
 
+### Env File
+Create and modify the `.env` file in the repostory. Reference the `.env_sample` file for the requirement parameters.
+
 ### Docker
 
 List Images: 
