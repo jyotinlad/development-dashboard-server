@@ -3,6 +3,8 @@
 ## Overview
 A backend API service..
 
+![Python Package](https://github.com/jyotinlad/development-dashboard-server/workflows/Python%20Package/badge.svg)
+
 ## Setup
 
 ### Env File
