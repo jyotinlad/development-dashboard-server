@@ -27,7 +27,10 @@ class Board:
 
                     data.append({
                         "title": card.get("name"),
-                        "completed_date": datetime.strptime(card.get("due"), "%Y-%m-%dT%H:%M:%S.%fZ")
+                        "completed_date": datetime.strptime(
+                            card.get("due"),
+                            "%Y-%m-%dT%H:%M:%S.%fZ"
+                        )
                     })
 
         return data

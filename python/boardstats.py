@@ -11,7 +11,7 @@ class BoardStats:
     @staticmethod
     def _get_end_of_month(dt):
         return dt.replace(day=monthrange(dt.year, dt.month)[1])
-    
+
     @staticmethod
     def _get_quarter_from_month(month):
         return (month - 1) // 3 + 1
@@ -50,7 +50,9 @@ class BoardStats:
         months = Counter()
         for i in range(6):
             month = start_date + relativedelta(months=i)
-            months[month.replace(day=monthrange(month.year, month.month)[1])] += 0
+
+            key = month.replace(day=monthrange(month.year, month.month)[1])
+            months[key] += 0
 
         board = Board(board_id)
         records = board.completed()
@@ -61,6 +63,9 @@ class BoardStats:
             if completed_date < start_date:
                 continue
 
-            months[completed_date.replace(day=monthrange(completed_date.year, completed_date.month)[1])] += 1
+            key = completed_date.replace(
+                day=monthrange(completed_date.year, completed_date.month)[1]
+            )
+            months[key] += 1
 
         return {"name": board.name, "records": dict(months)}

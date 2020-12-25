@@ -6,7 +6,7 @@ class BoardStatsTests(TestCase):
     def test_get_end_of_month(self):
         # return dt.replace(day=monthrange(dt.year, dt.month)[1])
         pass
-    
+
     def test_get_quarter_from_month(self):
         # return (month - 1) // 3 + 1
         pass

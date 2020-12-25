@@ -1,5 +1,4 @@
 from argparse import ArgumentParser
-from datetime import datetime
 from flask import Flask, jsonify, request
 from json import load
 from os import path
@@ -43,7 +42,7 @@ def get_progress_data(interval):
             "id": stat.get("name"),
             "data": records
         })
-    
+
     return data
 
 
@@ -59,7 +58,7 @@ def listing():
     for parameter in parameters:
         if parameter not in query_parameters:
             return invalid_query(f"Missing Parameter: {parameter}")
-    
+
     response = jsonify(Listing.get(query_parameters.get("type")))
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
@@ -70,11 +69,13 @@ def progress():
     query_parameters = request.args
     if 'interval' not in query_parameters:
         return invalid_query("Missing Parameter: interval")
-    
+
     interval = query_parameters.get("interval")
     intervals = ["monthly", "quarterly"]
     if interval not in intervals:
-        return invalid_query(f"Invalid Parameter Value: interval requires one of {intervals}")
+        return invalid_query(
+            f"Invalid Parameter Value: interval requires one of {intervals}"
+        )
 
     response = jsonify(get_progress_data(interval))
     response.headers.add("Access-Control-Allow-Origin", "*")

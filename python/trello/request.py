@@ -35,6 +35,10 @@ class Request:
         return url
 
     def get(self, object, id, return_object=None):
-        response = request("GET", self._url_constructor(object, id, return_object), params=self._get_params())
+        response = request(
+            "GET",
+            self._url_constructor(object, id, return_object),
+            params=self._get_params()
+        )
         data = loads(response.text)
         return data
