@@ -4,7 +4,7 @@ COPY . /development-dashboard-server
 
 WORKDIR /development-dashboard-server
 
-RUN pip install -r docker_python_requirements.txt
+RUN pip install -r python_requirements.txt
 
 ENTRYPOINT ["python"]
 

@@ -6,8 +6,8 @@ from os import path
 from pathlib import Path
 from waitress import serve
 
-from boardstats import BoardStats
-from listing import Listing
+from python.boardstats import BoardStats
+from python.listing import Listing
 
 
 app = Flask(__name__)

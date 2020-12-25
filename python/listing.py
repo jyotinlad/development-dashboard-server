@@ -1,5 +1,4 @@
-from dotenv import load_dotenv
-from google.sheets import Sheets
+from .google.sheets import Sheets
 
 
 class Listing:

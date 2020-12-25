@@ -3,7 +3,7 @@ from collections import Counter
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
-from trello.board import Board
+from .trello.board import Board
 
 
 class BoardStats:
