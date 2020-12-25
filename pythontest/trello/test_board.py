@@ -7,7 +7,7 @@ class BoardTests(TestCase):
         pass
 
     def test_completed(self):
-        pass
+        assert 1 == 2
 
 
 if __name__ == "__main__":
