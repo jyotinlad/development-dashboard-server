@@ -12,11 +12,14 @@ class Request:
         self._API_KEY = getenv("TRELLO_API_KEY")
         self._TOKEN = getenv("TRELLO_TOKEN")
 
-        if not self._TOKEN:
-            raise EnvironmentError("the Trello TOKEN not defined")
+        if not self._BASE_URL:
+            raise EnvironmentError("the Trello base URL is not defined")
 
         if not self._API_KEY:
-            raise EnvironmentError("the Trello API key not defined")
+            raise EnvironmentError("the Trello API key is not defined")
+
+        if not self._TOKEN:
+            raise EnvironmentError("the Trello token is not defined")
 
     def _get_params(self, **kwargs):
         url_params = {
@@ -40,5 +43,5 @@ class Request:
             self._url_constructor(object, id, return_object),
             params=self._get_params()
         )
-        data = loads(response.text)
-        return data
+
+        return loads(response.text)
