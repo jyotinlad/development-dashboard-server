@@ -34,4 +34,10 @@ Stop Container:
 
 ## Unit Tests
 
-TODO..
+Running the unit tests can be done using the following commands:
+1. `python -m unittest discover`
+2. `pytest`
+
+Note, all directories within the `pythontest` directory must contain an `__init__.py` file. This is so that all the tests can be found and run.
+
+pytest automatically adds the root directory to the sys.path
