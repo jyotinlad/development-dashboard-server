@@ -1,4 +1,5 @@
 flask
+freezegun
 python-dateutil
 python-dotenv
 requests
