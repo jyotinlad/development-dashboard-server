@@ -1,7 +1,7 @@
 # Development Dashboard Server
 
 ## Overview
-A backend API service..
+A backend API service for the [Development Dashboard App](https://github.com/jyotinlad/development-dashboard-app).
 
 ![Python Package](https://github.com/jyotinlad/development-dashboard-server/workflows/Python%20Package/badge.svg)
 
@@ -34,10 +34,8 @@ Stop Container:
 
 ## Unit Tests
 
-Running the unit tests can be done using the following commands:
+Running the unit tests can be done using the following commands. The first option will need the project to be included in the sys path (whereas the latter does this automatically).
 1. `python -m unittest discover`
 2. `pytest`
 
 Note, all directories within the `pythontest` directory must contain an `__init__.py` file. This is so that all the tests can be found and run.
-
-pytest automatically adds the root directory to the sys.path
